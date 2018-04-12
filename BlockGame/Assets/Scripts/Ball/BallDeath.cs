@@ -27,6 +27,7 @@ public class BallDeath : MonoBehaviour {
     {
         if (col.gameObject.tag == "WallD")
         {
+            ScoreManager.score -= 50;
             BallController.reviveCount = BallController.reviveCount - 1;
             Debug.Log(BallController.reviveCount + ", " + col.gameObject.name);
             Destroy(gameObject);

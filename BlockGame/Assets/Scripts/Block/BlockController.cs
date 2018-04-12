@@ -22,6 +22,7 @@ public class BlockController : MonoBehaviour {
     {
         if(col.gameObject.tag == "Ball")
         {
+            ScoreManager.score += 10;
             Destroy(gameObject);
         }
     }
