@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour {
 
@@ -42,8 +43,11 @@ public class BallController : MonoBehaviour {
         }
         else if(obj == null && reviveCount <= 0)
         {
+            SceneManager.LoadScene("MainMenuScene");
             CanCreate = false;
         }
+
+        TimeStop();
         
         
         
@@ -67,6 +71,21 @@ public class BallController : MonoBehaviour {
             FirstCheck = true;
             obj.transform.SetParent(null);//부모 오브젝트에서 꺼냄(공을) 발사때만.
             rigid.AddForce(Vector3.up * BallSpeed);            
+        }
+    }
+
+    void TimeStop()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            if(Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }            
         }
     }
     
