@@ -38,6 +38,8 @@ public class Player : Character {
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        Jump();
     }
 
     private void FixedUpdate()
@@ -46,6 +48,10 @@ public class Player : Character {
         GetAnimator.SetBool("IsGround", isGround);
 
         Move(horizontal);
+
+        float vY = Rigid.velocity.y;
+
+        GetAnimator.SetFloat("VelocityY", vY);
     }
     void Move(float h)
     {
@@ -74,5 +80,16 @@ public class Player : Character {
             return false;
         }*/
 
+    }
+
+    void Jump()
+    {
+        if (!isGround) //isGround == false;
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Rigid.AddForce(Vector3.up * JumpForce, ForceMode2D.Impulse);
+        }
     }
 }

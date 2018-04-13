@@ -1,16 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿public interface IState
+{
+    bool IsRunning { get; }
+    bool UseFixedUpdate { get; }
 
-public class IState : MonoBehaviour {
+    void Enter();
+    void Exit();
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Update();
 }
