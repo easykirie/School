@@ -22,6 +22,8 @@ public class BallController : MonoBehaviour {
 
     public static int reviveCount;
 
+    
+
     private void Awake()
     {
         reviveCount = 2;
@@ -30,6 +32,7 @@ public class BallController : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
+        
     }
 	
 	// Update is called once per frame
@@ -47,7 +50,7 @@ public class BallController : MonoBehaviour {
             CanCreate = false;
         }
 
-        TimeStop();
+        
         
         
         
@@ -74,20 +77,7 @@ public class BallController : MonoBehaviour {
         }
     }
 
-    void TimeStop()
-    {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            if(Time.timeScale == 0)
-            {
-                Time.timeScale = 1;
-            }
-            else
-            {
-                Time.timeScale = 0;
-            }            
-        }
-    }
+    
     
 
 

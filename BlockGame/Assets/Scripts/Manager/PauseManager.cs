@@ -5,8 +5,40 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
-	public void GameQuit()
+    public GameObject pause;
+
+
+    
+
+    public void GameQuit()
     {
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    void TimeStop()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 0)
+            {                
+                Time.timeScale = 1;
+                pause.gameObject.SetActive(false);
+            }
+            else
+            {                
+                Time.timeScale = 0;
+                pause.gameObject.SetActive(true);
+            }
+            
+        }
+    }
+
+    private void Update()
+    {
+        if(pause.gameObject.activeInHierarchy == false)
+        {
+            Time.timeScale = 1;
+        }
+        TimeStop();
     }
 }

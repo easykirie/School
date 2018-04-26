@@ -15,8 +15,8 @@ public class BlockCreate : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        MaximumCount = 40;
-        MinimumCount = 20;
+        MaximumCount = 4 * SpawnPosition.Length / 5;
+        MinimumCount = MaximumCount - 3 * MaximumCount / 5;
 
         int count = Random.Range(MinimumCount, MaximumCount);
 
