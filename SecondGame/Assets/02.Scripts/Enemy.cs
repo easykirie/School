@@ -32,7 +32,7 @@ public abstract class Enemy : Character {
         state = GetState(key);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (state == null || state.UseFixedUpdate)
             return;
@@ -43,7 +43,7 @@ public abstract class Enemy : Character {
         state.Update();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (state == null || state.UseFixedUpdate == false)
             return;

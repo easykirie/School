@@ -11,28 +11,32 @@ public class Player : Character {
     public float RunSpeed = 1;
     public float JumpForce = 1;
 
-    [Header("Ground Check")]//칼라 빼고 그라운드체크에 필요한것들
-    public Color GizmosColor;
-    public LayerMask GroundLayer;
-    public Vector3 Offset;
-    public float Radius = 1;
+    GroundChecker groundChecker;
+
+    //[header("ground check")]//칼라 빼고 그라운드체크에 필요한것들
+    //public color gizmoscolor;
+    //public layermask groundlayer;
+    //public vector3 offset;
+    //public float radius = 1;
 
     public override void OnHurt(int amount)
     {
+        GetAnimator.SetTrigger("Hurt");
         base.OnHurt(amount);        
     }
 
-    private void OnDrawGizmos()
-    {
-        Handles.color = GizmosColor;
+    //private void OnDrawGizmos()
+    //{
+    //    Handles.color = GizmosColor;
 
-        Handles.DrawWireDisc(transform.position + Offset, Vector3.forward, Radius);
-    }
+    //    Handles.DrawWireDisc(transform.position + Offset, Vector3.forward, Radius);
+    //}
 
     private void Awake()
     {
         GetAnimator = GetComponent<Animator>();
         Rigid = GetComponent<Rigidbody2D>();
+        groundChecker = GetComponent<GroundChecker>();
     }
 
     private void Update()
@@ -44,8 +48,8 @@ public class Player : Character {
 
     private void FixedUpdate()
     {
-        isGround = CheckGround();
-        GetAnimator.SetBool("IsGround", isGround);
+        //isGround = CheckGround();
+        GetAnimator.SetBool("IsGround", groundChecker.IsGround);
 
         Move(horizontal);
 
@@ -65,26 +69,26 @@ public class Player : Character {
         transform.Translate(Vector3.right * h * RunSpeed * Time.fixedDeltaTime);
     }
 
-    bool CheckGround()
-    {
-        Collider2D collider = Physics2D.OverlapCircle(transform.position + Offset, Radius, GroundLayer);
+    //bool CheckGround()
+    //{
+    //    Collider2D collider = Physics2D.OverlapCircle(transform.position + Offset, Radius, GroundLayer);
 
-        return collider != null ? true : false;
+    //    return collider != null ? true : false;
 
-        /*if(collider != null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }*/
+    //    /*if(collider != null)
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }*/
 
-    }
+    //}
 
     void Jump()
     {
-        if (!isGround) //isGround == false;
+        if (!groundChecker.IsGround) //isGround == false;
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
