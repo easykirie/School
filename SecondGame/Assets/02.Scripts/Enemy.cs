@@ -4,11 +4,29 @@ using UnityEngine;
 
 public abstract class Enemy : Character {
 
+    public int Damage = 10;
+
     protected IState state;
 
     protected Dictionary<string, IState> states = new Dictionary<string, IState>();
 
     public abstract void Setup();
+
+    public override void OnHurt(int amount)
+    {
+        base.OnHurt(amount);
+
+        if(Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+            collision.GetComponent<Character>().OnHurt(Damage);
+    }
 
     public void AddState(string key, IState state)
     {

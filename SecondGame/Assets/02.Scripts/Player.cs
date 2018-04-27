@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class Player : Character {
 
@@ -11,6 +12,15 @@ public class Player : Character {
     public float RunSpeed = 1;
     public float JumpForce = 1;
 
+    public GameObject GameOverUI;
+
+    public int WeaponIndex = -1;    
+    public List<Weapon> ListofWeapon;
+
+    Weapon weapon = null;
+
+    bool IsAttack = false;
+
     GroundChecker groundChecker;
 
     //[header("ground check")]//칼라 빼고 그라운드체크에 필요한것들
@@ -19,10 +29,39 @@ public class Player : Character {
     //public vector3 offset;
     //public float radius = 1;
 
+    public void SetWeapon(int index)
+    {
+        WeaponIndex = index;
+
+        if (weapon != null)
+            weapon.gameObject.SetActive(false);
+
+        weapon = ListofWeapon[WeaponIndex];
+        weapon.gameObject.SetActive(true);
+    }
+
+    void Dead()
+    {
+        Time.timeScale = 0;
+        GameOverUI.SetActive(true);
+    }
+
     public override void OnHurt(int amount)
     {
         GetAnimator.SetTrigger("Hurt");
-        base.OnHurt(amount);        
+        base.OnHurt(amount);
+        OffAttack();
+
+        if(Health <= 0)
+        {
+            Dead();
+        }
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
     //private void OnDrawGizmos()
@@ -44,6 +83,42 @@ public class Player : Character {
         horizontal = Input.GetAxisRaw("Horizontal");
 
         Jump();
+
+        if(weapon != null)
+        {
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                Attack();
+            }
+        }
+    }
+
+    public void OnAttack()
+    {
+        if (weapon == null)
+            return;
+
+        IsAttack = true;
+
+        weapon.SetCollider(true);
+    }
+
+    public void OffAttack()
+    {
+        if (weapon == null) 
+           return;
+
+        IsAttack = false;
+
+        weapon.SetCollider(false);
+    }
+
+    void Attack()
+    {
+        if (IsAttack == true)
+            return;
+
+        GetAnimator.SetTrigger("Attack");
     }
 
     private void FixedUpdate()
