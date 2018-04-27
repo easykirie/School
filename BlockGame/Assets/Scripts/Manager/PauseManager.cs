@@ -7,8 +7,12 @@ public class PauseManager : MonoBehaviour {
 
     public GameObject pause;
 
+    public static bool IsOver;
 
-    
+    public void Awake()
+    {
+        IsOver = false;
+    }
 
     public void GameQuit()
     {
@@ -19,12 +23,12 @@ public class PauseManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (Time.timeScale == 0)
-            {                
+            if (Time.timeScale == 0 && IsOver == false)
+            {
                 Time.timeScale = 1;
                 pause.gameObject.SetActive(false);
             }
-            else
+            else if (Time.timeScale != 0 && IsOver == false)
             {                
                 Time.timeScale = 0;
                 pause.gameObject.SetActive(true);
@@ -33,9 +37,11 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
+    
+
     private void Update()
     {
-        if(pause.gameObject.activeInHierarchy == false)
+        if (pause.gameObject.activeInHierarchy == false)
         {
             Time.timeScale = 1;
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
 
-    public float speed = 6f;
+    public static float speed = 6f;
 
     public Transform tr;
 
@@ -15,15 +15,27 @@ public class PlayerMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.LeftArrow))
-        {
+
+        tr.position = new Vector3(Mathf.Clamp(tr.position.x, -9.9f, 9.9f) ,Mathf.Clamp(tr.position.y, -11.5f, -9), -0.5f);
+
+        Move();
+            
+    }
+
+    void Move()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
             transform.Translate(Vector3.left * speed * Time.deltaTime);
-        }
 
         if (Input.GetKey(KeyCode.RightArrow))
-        {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+
+
+        if (Input.GetKey(KeyCode.DownArrow))
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision col)
@@ -44,6 +56,8 @@ public class PlayerMove : MonoBehaviour {
                 result = -1.0f;
             }
             col.rigidbody.AddForce(new Vector3(150.0f * result, 50.0f, 0.0f));
-        }
+        }        
     }
+
+    
 }

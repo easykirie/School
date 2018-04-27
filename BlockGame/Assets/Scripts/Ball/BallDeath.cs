@@ -31,6 +31,9 @@ public class BallDeath : MonoBehaviour {
             BallController.reviveCount = BallController.reviveCount - 1;
             Debug.Log(BallController.reviveCount + ", " + col.gameObject.name);
             Destroy(gameObject);
+            PlayerMove.speed = 10;
+
+            
             
         }
     }

@@ -11,6 +11,7 @@ public class BlockCreate : MonoBehaviour {
     List<int> BlockPosition = new List<int>();
     int CreateIndex = 0;
 
+    public Transform B_Points;
     
 
     // Use this for initialization
@@ -36,7 +37,7 @@ public class BlockCreate : MonoBehaviour {
 
             if(CanCreate == true)
             {
-                Instantiate(Block, SpawnPosition[SpawnIndex].position, SpawnPosition[SpawnIndex].rotation);
+                Instantiate(Block, SpawnPosition[SpawnIndex].position, SpawnPosition[SpawnIndex].rotation, B_Points);
 
                 BlockPosition.Add(SpawnIndex);
 

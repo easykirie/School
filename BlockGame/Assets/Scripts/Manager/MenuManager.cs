@@ -9,6 +9,11 @@ public class MenuManager : MonoBehaviour {
     bool normal = false;
     bool hard = false;
 
+    public void Start()
+    {
+        easy = true;
+    }
+
     public void PlayGame()
     {
         if(easy == true)

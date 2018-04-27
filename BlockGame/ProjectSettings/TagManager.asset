@@ -13,6 +13,8 @@ TagManager:
   - WallR
   - WallT
   - WallD
+  - D_Item
+  - H_Item
   layers:
   - Default
   - TransparentFX
