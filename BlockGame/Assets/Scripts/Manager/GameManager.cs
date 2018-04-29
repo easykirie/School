@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -11,9 +12,13 @@ public class GameManager : MonoBehaviour {
 
     public GameObject pause;
 
+    public GameObject Over;
+
     public bool IsStart;
 
     public GameObject Debuff;
+
+    
 
     
 
@@ -36,6 +41,14 @@ public class GameManager : MonoBehaviour {
             IsStart = false;
             pause.gameObject.SetActive(true);
             PauseManager.IsOver = true;
+            Time.timeScale = 0;
+        }
+
+        if(B_Points.childCount > 0 && BallController.reviveCount <= 0 && IsStart == true)
+        {
+            IsStart = false;
+            Over.gameObject.SetActive(true);
+            OverManager.IsEnd = true;
             Time.timeScale = 0;
         }
 

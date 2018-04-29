@@ -45,8 +45,7 @@ public class BallController : MonoBehaviour {
             BallCreate();           
         }
         else if(obj == null && reviveCount <= 0)
-        {
-            SceneManager.LoadScene("MainMenuScene");
+        {            
             CanCreate = false;
         }
 

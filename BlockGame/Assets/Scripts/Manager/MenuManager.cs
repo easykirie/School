@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-    bool easy = false;
-    bool normal = false;
-    bool hard = false;
+    public static bool easy = false;
+    public static bool normal = false;
+    public static bool hard = false;
 
     public void Start()
     {
