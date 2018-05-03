@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
 
     public GameObject Debuff;
 
+    public GameObject Health;
+
     
 
     
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.D))
             Instantiate(Debuff, Debuff.transform.position, Debuff.transform.rotation);
+        if (Input.GetKeyDown(KeyCode.H))
+            Instantiate(Health, Health.transform.position, Health.transform.rotation);
 
         if (B_Points.childCount == 0 && IsStart == true)
         {

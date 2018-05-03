@@ -3842,6 +3842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 1170706171}
+  Cam: {fileID: 0}
 --- !u!1 &1184439039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,6 +5575,7 @@ MonoBehaviour:
   Over: {fileID: 1506446055}
   IsStart: 0
   Debuff: {fileID: 1670824531059626, guid: 2366bc92304a75740ab31a83fa442b22, type: 2}
+  Health: {fileID: 1644514882249750, guid: d053df581a1b34e47887dd41c9aef20b, type: 2}
 --- !u!1 &1861310840
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,9 +7,11 @@ public class BlockCreate : MonoBehaviour {
     public int MaximumCount;
     public int MinimumCount;    
     public Transform[] SpawnPosition;
-    public GameObject Block;
+    public GameObject[] Block;
     List<int> BlockPosition = new List<int>();
     int CreateIndex = 0;
+
+    int Block_Create;
 
     public Transform B_Points;
     
@@ -19,10 +21,13 @@ public class BlockCreate : MonoBehaviour {
         MaximumCount = 4 * SpawnPosition.Length / 5;
         MinimumCount = MaximumCount - 2 * MaximumCount / 5;
 
+        
+
         int count = Random.Range(MinimumCount, MaximumCount);
 
         while(CreateIndex <= count)
         {
+            Block_Create = Random.Range(0, Block.Length);
             int SpawnIndex = Random.Range(0, SpawnPosition.Length);
             bool CanCreate = true;
 
@@ -37,7 +42,7 @@ public class BlockCreate : MonoBehaviour {
 
             if(CanCreate == true)
             {
-                Instantiate(Block, SpawnPosition[SpawnIndex].position, SpawnPosition[SpawnIndex].rotation, B_Points);
+                Instantiate(Block[Block_Create], SpawnPosition[SpawnIndex].position, SpawnPosition[SpawnIndex].rotation, B_Points);
 
                 BlockPosition.Add(SpawnIndex);
 

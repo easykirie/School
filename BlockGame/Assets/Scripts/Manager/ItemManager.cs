@@ -5,23 +5,25 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour {
 
     public GameObject Item;
+    public GameObject Cam;
+    static float CamRotate =45;
 
     public void Awake()
     {
         
+        Cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     public void ThisTag()
     {
         if(Item.tag == "H_Item")
         {
-            BallController.reviveCount++;
+            BallController.reviveCount += 1;
         }
-        if(Item.tag == "D_Item")
+        else if(Item.tag == "D_Item")
         {
-            if (PlayerMove.speed <= 2)
-                return;
-            PlayerMove.speed -= 1;
+            Cam.transform.rotation = Quaternion.Euler(0, 0, CamRotate);
+            CamRotate += 45;
         }
     }
 

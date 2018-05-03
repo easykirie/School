@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour {
 
-    public float BallSpeed = 10;
+    public float BallSpeed = 1000;
     public Transform SpawnPosition;
     public GameObject Ball;    
     public GameObject Player;
@@ -22,17 +22,18 @@ public class BallController : MonoBehaviour {
 
     public static int reviveCount;
 
+    public GameObject[] Block;
+
     
 
     private void Awake()
-    {
-        reviveCount = 2;
+    {        
         CanCreate = true;        
         BallCreate();        
     }
     // Use this for initialization
     void Start () {
-        
+        reviveCount = 2;
     }
 	
 	// Update is called once per frame
@@ -77,7 +78,9 @@ public class BallController : MonoBehaviour {
     }
 
     
-    
+
+
+
 
 
 

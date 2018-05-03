@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BlockController : MonoBehaviour {
 
-    
-    
+    public GameObject block;    
 
 	// Use this for initialization
 	void Start () {
@@ -22,8 +21,16 @@ public class BlockController : MonoBehaviour {
     {
         if(col.gameObject.tag == "Ball")
         {
-            ScoreManager.score += 10;
-            Destroy(gameObject);
+            if (block.tag == "Block")
+            {
+                ScoreManager.score += 10;
+                Destroy(gameObject);
+            }
+            else if(block.tag == "BlockW")
+            {
+                ScoreManager.score += 20;
+                Destroy(gameObject);
+            }
         }
     }
 }

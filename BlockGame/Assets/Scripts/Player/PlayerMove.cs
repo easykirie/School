@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
 
-    public static float speed = 6f;
+    public static float speed = 10f;
 
     public Transform tr;
 

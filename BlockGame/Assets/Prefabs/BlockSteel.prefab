@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23825173201346296}
   - component: {fileID: 114025533400721870}
   m_Layer: 0
-  m_Name: Block
+  m_Name: BlockSteel
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,4 +107,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da12ff95cd7490a44b4727ccda945206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 1750940198798610}
+  block: {fileID: 0}

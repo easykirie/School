@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 23825173201346296}
   - component: {fileID: 114025533400721870}
   m_Layer: 0
-  m_Name: Block
-  m_TagString: Block
+  m_Name: BlockWood
+  m_TagString: BlockW
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6b7b1b77442594e4b95588960a5beb99, type: 2}
+  - {fileID: 2100000, guid: ce2c5e9a6a79721489138dfe63284016, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
