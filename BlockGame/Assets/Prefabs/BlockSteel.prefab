@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114025533400721870}
   m_Layer: 0
   m_Name: BlockSteel
-  m_TagString: Block
+  m_TagString: BlockS
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6b7b1b77442594e4b95588960a5beb99, type: 2}
+  - {fileID: 2100000, guid: 0b8aea7864928ca43afd23b968d4ffca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,4 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da12ff95cd7490a44b4727ccda945206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 0}
+  block: {fileID: 1750940198798610}
+  CanBreak: 0
+  items:
+  - {fileID: 1644514882249750, guid: d053df581a1b34e47887dd41c9aef20b, type: 2}
+  - {fileID: 1670824531059626, guid: 2366bc92304a75740ab31a83fa442b22, type: 2}

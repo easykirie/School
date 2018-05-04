@@ -33,9 +33,9 @@ public class OverManager : MonoBehaviour {
     {
         if (MenuManager.easy == true)
             SceneManager.LoadScene("MainScene_Easy");
-        if (MenuManager.normal == true)
+        else if (MenuManager.normal == true)
             SceneManager.LoadScene("MainScene_Normal");
-        if (MenuManager.hard == true)
+        else if (MenuManager.hard == true)
             SceneManager.LoadScene("MainScene_Hard");
 
     }

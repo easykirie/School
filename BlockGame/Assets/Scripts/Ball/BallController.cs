@@ -22,7 +22,7 @@ public class BallController : MonoBehaviour {
 
     public static int reviveCount;
 
-    public GameObject[] Block;
+    
 
     
 

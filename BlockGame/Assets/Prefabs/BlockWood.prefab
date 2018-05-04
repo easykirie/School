@@ -108,3 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 1750940198798610}
+  CanBreak: 0
+  items:
+  - {fileID: 1644514882249750, guid: d053df581a1b34e47887dd41c9aef20b, type: 2}
+  - {fileID: 1670824531059626, guid: 2366bc92304a75740ab31a83fa442b22, type: 2}

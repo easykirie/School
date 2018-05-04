@@ -5,15 +5,20 @@ using UnityEngine;
 public class BlockCreate : MonoBehaviour {
 
     public int MaximumCount;
-    public int MinimumCount;    
+    public int MinimumCount;
     public Transform[] SpawnPosition;
     public GameObject[] Block;
+    
+
     List<int> BlockPosition = new List<int>();
     int CreateIndex = 0;
 
     int Block_Create;
 
     public Transform B_Points;
+
+    
+
     
 
     // Use this for initialization
@@ -31,9 +36,9 @@ public class BlockCreate : MonoBehaviour {
             int SpawnIndex = Random.Range(0, SpawnPosition.Length);
             bool CanCreate = true;
 
-            for(int i = 0;i < BlockPosition.Count; i++)
+            for(int i = 0; i < BlockPosition.Count; i++)
             {
-                if(BlockPosition[i] == SpawnIndex)
+                if (BlockPosition[i] == SpawnIndex)
                 {
                     CanCreate = false;
                     break;
