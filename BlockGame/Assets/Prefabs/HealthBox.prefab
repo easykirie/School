@@ -138,5 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad51168626da0b448cf22f4e1f2911f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ball: {fileID: 1481451972866696, guid: 6aa2f3d8f3b73ae489cbd978a7c82167, type: 2}
+  BSP: {fileID: 0}
   Item: {fileID: 1644514882249750}
   Cam: {fileID: 0}
+  BallSpeed: 1000

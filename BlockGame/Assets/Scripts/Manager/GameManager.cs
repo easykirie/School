@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
 
     public Transform B_Points;
 
+    public GameObject Ball;
+
+    public GameObject BSP;
+
     public GameObject pause;
 
     public GameObject Over;
@@ -20,17 +24,23 @@ public class GameManager : MonoBehaviour {
 
     public GameObject Health;
 
-    
+    Rigidbody rigid;
 
+    float BallSpeed = 1000;
+
+
+    GameObject ball;
     
 
     
 
 
     // Use this for initialization
-    void Start () {        
+    void Start () {
+        //ball = GameObject.FindGameObjectWithTag("Ball");
         text.text = "목숨 : " + BallController.reviveCount;
         IsStart = true;
+        rigid = Ball.GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
@@ -58,5 +68,13 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
         }
 
+        if(ItemManager.IsCreate == true)
+        {
+            GameObject obj = Instantiate(Ball, BSP.transform.position, Quaternion.identity);
+            obj.transform.SetParent(BSP.transform);
+            obj.GetComponent<Rigidbody>().AddForce(Vector3.up * BallSpeed);
+            obj.layer = 0;
+            ItemManager.IsCreate = false;
+        }
     }
 }

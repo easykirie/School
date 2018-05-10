@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour {
 
+    public GameObject Ball;
+    public GameObject BSP;
     public GameObject Item;
     public GameObject Cam;
     static float CamRotate =45;
+    public float BallSpeed = 1000;
+    Rigidbody rigid;
+    public static bool IsCreate = false;
 
     public void Awake()
     {
-        
+        rigid = Ball.GetComponent<Rigidbody>();
         Cam = GameObject.FindGameObjectWithTag("MainCamera");
+    }
+
+    void Start()
+    {
+        BSP = GameObject.FindGameObjectWithTag("BSP");
     }
 
     public void ThisTag()
@@ -22,8 +32,18 @@ public class ItemManager : MonoBehaviour {
         }
         else if(Item.tag == "D_Item")
         {
-            Cam.transform.rotation = Quaternion.Euler(0, 0, CamRotate);
-            CamRotate += 45;
+            float D_Num = Random.Range(0, 2);
+
+            if(D_Num == 0)
+            {
+                Cam.transform.rotation = Quaternion.Euler(0, 0, CamRotate);
+                CamRotate += 45;
+            }
+            else if(D_Num == 1)
+            {
+                IsCreate = true;                                
+            }
+                
         }
     }
 
@@ -32,18 +52,16 @@ public class ItemManager : MonoBehaviour {
         if(col.gameObject.tag == "Player")
         {
             ThisTag();
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
         }
     }
 
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
 	}
 }

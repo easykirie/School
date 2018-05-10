@@ -30,8 +30,7 @@ public class BallDeath : MonoBehaviour {
             ScoreManager.score -= 50;
             BallController.reviveCount = BallController.reviveCount - 1;
             Debug.Log(BallController.reviveCount + ", " + col.gameObject.name);
-            Destroy(gameObject);
-            PlayerMove.speed = 10;
+            Destroy(gameObject);            
 
             
             
