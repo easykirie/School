@@ -48,13 +48,9 @@ public class BallController : MonoBehaviour {
         else if(obj == null && reviveCount <= 0)
         {            
             CanCreate = false;
-        }
-
-        
-        
-        
-        
+        }        
 	}
+
 
     void BallCreate()
     {
@@ -73,7 +69,7 @@ public class BallController : MonoBehaviour {
         {
             FirstCheck = true;
             obj.transform.SetParent(null);//부모 오브젝트에서 꺼냄(공을) 발사때만.
-            rigid.AddForce(Vector3.up * BallSpeed);            
+            rigid.velocity = Vector3.up * BallSpeed;//AddForce(Vector3.up * BallSpeed);            
         }
     }
 

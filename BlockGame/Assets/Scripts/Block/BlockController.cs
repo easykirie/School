@@ -7,7 +7,10 @@ public class BlockController : MonoBehaviour
 
     public GameObject block;
 
-    public bool CanBreak;
+    public bool CanBreak = false;
+
+    public bool WPH;
+
 
     int block_num;
 
@@ -31,16 +34,27 @@ public class BlockController : MonoBehaviour
         else if (block.tag == "BlockW")
             block_num = 1;
         else if (block.tag == "BlockS")
+        {
             block_num = 2;
+            CanBreak = false;
+        }
         else if (block.tag == "BlockT")
             block_num = 3;
     }
 
     private void Awake()
-    {
+    {        
         CanBreak = false;
         BlockNumCheck();
         ItemNumCheck();
+    }
+
+    void Update()
+    {
+        if (GetComponentInChildren<WeakPoint>() == null)
+            return;
+
+        WPH = GetComponentInChildren<WeakPoint>().WeakPointHit;
     }
 
     private void OnCollisionEnter(Collision col)
@@ -63,7 +77,10 @@ public class BlockController : MonoBehaviour
         else if(col.gameObject.tag == "Ball" && block_num == 2)
         {
             ScoreManager.score += 1;
-            CanBreak = false;
+            if (WPH == false)
+                CanBreak = false;
+            else if (WPH == true)
+                Destroy(block);
         }
         else if(col.gameObject.tag == "Ball" && block_num == 3)
         {
@@ -91,11 +108,7 @@ public class BlockController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }
     
 

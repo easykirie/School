@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour {
             obj.transform.SetParent(BSP.transform);
             obj.GetComponent<Rigidbody>().AddForce(Vector3.up * BallSpeed);
             obj.layer = 0;
+            obj.transform.SetParent(null);
             ItemManager.IsCreate = false;
         }
     }

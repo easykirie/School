@@ -8,8 +8,9 @@ public class BlockCreate : MonoBehaviour {
     public int MinimumCount;
     public Transform[] SpawnPosition;
     public GameObject[] Block;
-    
 
+    int BlockSlength;
+    int BlockTlength;
     List<int> BlockPosition = new List<int>();
     int CreateIndex = 0;
 
@@ -43,15 +44,32 @@ public class BlockCreate : MonoBehaviour {
                     CanCreate = false;
                     break;
                 }
+
+            }
+            if (Block_Create == 4 && BlockSlength == 4)
+            {
+                CanCreate = false;
+                continue;
+            }
+            else if (Block_Create == 5 && BlockTlength == 4)
+            {
+                CanCreate = false;
+                continue;
+
             }
 
-            if(CanCreate == true)
+            if (CanCreate == true)
             {
                 Instantiate(Block[Block_Create], SpawnPosition[SpawnIndex].position, SpawnPosition[SpawnIndex].rotation, B_Points);
 
                 BlockPosition.Add(SpawnIndex);
 
                 CreateIndex++;
+
+                if (Block_Create == 4)
+                    BlockSlength += 1;
+                else if (Block_Create == 5)
+                    BlockTlength += 1;
             }
             
         }

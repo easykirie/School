@@ -30,10 +30,15 @@ public class BallDeath : MonoBehaviour {
             ScoreManager.score -= 50;
             BallController.reviveCount = BallController.reviveCount - 1;
             Debug.Log(BallController.reviveCount + ", " + col.gameObject.name);
-            Destroy(gameObject);            
-
-            
-            
-        }
+            Destroy(gameObject);                                 
+        }        
     }
+
+    /*void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "WeakP")
+        {
+            BlockController.WeakPointHit = true;
+        }
+    }*/
 }

@@ -4555,7 +4555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d419b3f33be2791468c4a2df74aced46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallSpeed: 500
+  BallSpeed: 10
   SpawnPosition: {fileID: 1454093426}
   Ball: {fileID: 1481451972866696, guid: 6aa2f3d8f3b73ae489cbd978a7c82167, type: 2}
   Player: {fileID: 1966707058}
@@ -6040,6 +6040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa77d8192178144784d81583a5f32e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vSpeed: 10
   tr: {fileID: 0}
 --- !u!1 &1974562671
 GameObject:
