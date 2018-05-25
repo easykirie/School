@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour {
 
+
+    
+
     public List<GameObject> skills;
     public int skill_index;
     public GameObject coin;
@@ -27,34 +30,46 @@ public class ItemDrop : MonoBehaviour {
     public void Awake()
     {
         BoxCheck();
+         Get(0);
+    }
+
+    public Dialoge Get(int id)
+    {
+        //
     }
 
     public void BreakBox()
     {
         int i;
-        int probability = Random.Range(0, 1);
+        int H_range = Random.Range(0, 2);
+
+        GameObject coinPrefab = null;
+
         if (box_index == 0)
         {
             coinCount = Random.Range(5, 10);
-            for (i = 0; i <= coinCount; i++)
-                Instantiate(coin, box.transform.position, Quaternion.identity);
-            if(probability == 1)
-            {
-
-            }
+            coinPrefab = coin;
         }
         else if (box_index == 1)
         {
+            coinPrefab = coin;
             coinCount = Random.Range(11, 15);
-            for (i = 0; i <= coinCount; i++)
-                Instantiate(coin, box.transform.position, Quaternion.identity);
+            //for (i = 0; i <= coinCount; i++)
+            //    Instantiate(coin, box.transform.position, Quaternion.identity);
         }
         else if (box_index == 2)
         {
+            coinPrefab = S_coin;
             coinCount = Random.Range(15, 25);
-            for(i=0;i<=coinCount;i++)
-                Instantiate(S_coin, box.transform.position, Quaternion.identity);
+            //for(i=0;i<=coinCount;i++)
+            //    Instantiate(S_coin, box.transform.position, Quaternion.identity);
         }
+
+        for (i = 0; i <= coinCount; i++)
+            Instantiate(coinPrefab, box.transform.position, Quaternion.identity);
+        if (H_range == 1)
+            for (i = 0; i <= H_count; i++)
+                Instantiate(H_potion, box.transform.position, Quaternion.identity);
     }
 
 }
