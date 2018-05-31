@@ -15,28 +15,23 @@ public class ItemDrop : MonoBehaviour {
     public GameObject box;
     public int box_index;
     public GameObject H_potion;
-    public int H_count;
+    public int H_count = 2;
 
     public void BoxCheck()
     {
-        if (box.transform.CompareTag("Low"))
+        if (box.transform.CompareTag("Low"))//함정상자
             box_index = 0;
-        else if (box.transform.CompareTag("Middle"))
+        else if (box.transform.CompareTag("Middle"))//스테이지 클리어 상자
             box_index = 1;
-        else if (box.transform.CompareTag("Top"))
+        else if (box.transform.CompareTag("Top"))//보스 클리어 상자
             box_index = 2;
     }
 
     public void Awake()
     {
         BoxCheck();
-         Get(0);
     }
 
-    public Dialoge Get(int id)
-    {
-        //
-    }
 
     public void BreakBox()
     {
@@ -54,21 +49,19 @@ public class ItemDrop : MonoBehaviour {
         {
             coinPrefab = coin;
             coinCount = Random.Range(11, 15);
-            //for (i = 0; i <= coinCount; i++)
-            //    Instantiate(coin, box.transform.position, Quaternion.identity);
         }
         else if (box_index == 2)
         {
             coinPrefab = S_coin;
             coinCount = Random.Range(15, 25);
-            //for(i=0;i<=coinCount;i++)
-            //    Instantiate(S_coin, box.transform.position, Quaternion.identity);
+            skill_index = Random.Range(0, skills.Count);
+            Instantiate(skills[skill_index], box.transform.position, Quaternion.identity);
         }
 
-        for (i = 0; i <= coinCount; i++)
+        for (i = 1; i <= coinCount; i++)
             Instantiate(coinPrefab, box.transform.position, Quaternion.identity);
         if (H_range == 1)
-            for (i = 0; i <= H_count; i++)
+            for (i = 1; i <= H_count; i++)
                 Instantiate(H_potion, box.transform.position, Quaternion.identity);
     }
 

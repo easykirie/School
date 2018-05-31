@@ -17,9 +17,9 @@ public class DialogueManager : MonoBehaviour {
         sentences = new Queue<string>();
 	}
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue)//변수랑 이름 달라질듯 함...?
     {
-        // dialogue = Get(ID);
+        // dialogue = Get(ID); dialogue 값에 가져올 ID값을 넣는듯..?
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
